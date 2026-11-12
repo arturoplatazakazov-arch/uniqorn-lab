@@ -415,21 +415,6 @@ a:hover{color:#FF2D9B;}
   check();
 })();
 </script>
-<script>
-(function(){
-  var touchedAt=0;
-  document.addEventListener('touchstart',function(){touchedAt=Date.now();},{passive:true});
-  function tick(){
-    if (window.innerWidth>=860) return;
-    var s=document.querySelector('[data-spot]'); if(!s) return;
-    if (Date.now()-touchedAt<3000) return;
-    var r=s.getBoundingClientRect(); if (r.bottom<0||r.top>window.innerHeight) return;
-    s.style.setProperty('--mx',(18+Math.random()*64).toFixed(1)+'%');
-    s.style.setProperty('--my',(22+Math.random()*46).toFixed(1)+'%');
-  }
-  setInterval(tick,1800); setTimeout(tick,300);
-})();
-</script>
 <script src="assets/202412d1.js"></script>
 </helmet>
 <header style="position:sticky;top:0;z-index:50;background:rgba(11,18,38,.72);backdrop-filter:blur(18px) saturate(1.4);-webkit-backdrop-filter:blur(18px) saturate(1.4);box-shadow:0 1px 0 rgba(255,255,255,.06);">
@@ -892,4 +877,19 @@ class Component extends DCLogic {
 </script>
 
 
+<script>
+(function(){
+  var t0=0;
+  document.addEventListener('touchstart',function(){t0=Date.now();},{passive:true});
+  function tick(){
+    if (window.innerWidth>=860) return;
+    var s=document.querySelector('[data-spot]'); if(!s) return;
+    if (Date.now()-t0<3000) return;
+    var r=s.getBoundingClientRect(); if (r.bottom<0||r.top>window.innerHeight) return;
+    s.style.setProperty('--mx',(18+Math.random()*64).toFixed(1)+'%');
+    s.style.setProperty('--my',(22+Math.random()*46).toFixed(1)+'%');
+  }
+  setInterval(tick,1800); setTimeout(tick,300);
+})();
+</script>
 </body></html>
