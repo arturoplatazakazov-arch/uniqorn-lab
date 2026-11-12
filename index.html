@@ -388,7 +388,6 @@ a:hover{color:#FF2D9B;}
 @media (prefers-reduced-motion:no-preference){
 [data-r]:not([data-in]){opacity:0;transform:translateY(32px)}
 [data-io]:not([data-in]) [data-a="drop"],[data-io]:not([data-in]) [data-a="pop"]{opacity:0}
-[data-r],[data-a]{backface-visibility:hidden;-webkit-backface-visibility:hidden}
 }
 @keyframes crew-pan{0%,6%{transform:translateX(0)}94%,100%{transform:translateX(var(--crew-shift))}}
 @media (max-width:859px){
@@ -437,7 +436,7 @@ a:hover{color:#FF2D9B;}
 <main style="background:#0B1226;">
 <section id="top" data-screen-label="01 Hero" style="position:relative;overflow:hidden;background:#0B1226;padding:clamp(80px,11vw,150px) clamp(20px,5vw,64px);">
   <div style="position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(rgba(255,255,255,.06) 1.5px,transparent 1.5px);background-size:28px 28px;"></div>
-  <div style="position:absolute;width:clamp(360px,50vw,820px);height:clamp(360px,50vw,820px);border-radius:50%;background:#00E6FF;opacity:0.16;filter:blur(120px);pointer-events:none;top:-20%;left:-15%;"></div><div style="position:absolute;width:clamp(360px,50vw,820px);height:clamp(360px,50vw,820px);border-radius:50%;background:#7B61FF;opacity:0.2;filter:blur(120px);pointer-events:none;top:10%;right:-20%;"></div><div style="position:absolute;width:clamp(360px,50vw,820px);height:clamp(360px,50vw,820px);border-radius:50%;background:#FF2D9B;opacity:0.13;filter:blur(120px);pointer-events:none;bottom:-30%;left:30%;"></div>
+  <div style="position:absolute;width:clamp(360px,50vw,820px);height:clamp(360px,50vw,820px);background:radial-gradient(closest-side,#00E6FF 0%,#00E6FFb3 35%,#00E6FF00 100%);opacity:0.16;pointer-events:none;top:-20%;left:-15%;"></div><div style="position:absolute;width:clamp(360px,50vw,820px);height:clamp(360px,50vw,820px);background:radial-gradient(closest-side,#7B61FF 0%,#7B61FFb3 35%,#7B61FF00 100%);opacity:0.2;pointer-events:none;top:10%;right:-20%;"></div><div style="position:absolute;width:clamp(360px,50vw,820px);height:clamp(360px,50vw,820px);background:radial-gradient(closest-side,#FF2D9B 0%,#FF2D9Bb3 35%,#FF2D9B00 100%);opacity:0.13;pointer-events:none;bottom:-30%;left:30%;"></div>
   <div style="max-width:1240px;margin:0 auto;position:relative;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:clamp(40px,6vw,96px);align-items:center;">
     <div style="display:flex;flex-direction:column;gap:clamp(24px,3vw,36px);">
       <div data-r="" style="display:flex;align-items:center;gap:16px;">
@@ -462,7 +461,7 @@ a:hover{color:#FF2D9B;}
 </section>
 <section id="teams" data-screen-label="02 Teams" style="position:relative;overflow:hidden;background:#0B1226;padding:clamp(80px,11vw,150px) clamp(20px,5vw,64px);">
   <div style="position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(rgba(255,255,255,.06) 1.5px,transparent 1.5px);background-size:28px 28px;"></div>
-  <div style="position:absolute;width:clamp(360px,50vw,820px);height:clamp(360px,50vw,820px);border-radius:50%;background:#00E6FF;opacity:0.1;filter:blur(120px);pointer-events:none;top:-30%;left:-20%;"></div><div style="position:absolute;width:clamp(360px,50vw,820px);height:clamp(360px,50vw,820px);border-radius:50%;background:#FF2D9B;opacity:0.12;filter:blur(120px);pointer-events:none;bottom:-30%;right:-10%;"></div>
+  <div style="position:absolute;width:clamp(360px,50vw,820px);height:clamp(360px,50vw,820px);background:radial-gradient(closest-side,#00E6FF 0%,#00E6FFb3 35%,#00E6FF00 100%);opacity:0.1;pointer-events:none;top:-30%;left:-20%;"></div><div style="position:absolute;width:clamp(360px,50vw,820px);height:clamp(360px,50vw,820px);background:radial-gradient(closest-side,#FF2D9B 0%,#FF2D9Bb3 35%,#FF2D9B00 100%);opacity:0.12;pointer-events:none;bottom:-30%;right:-10%;"></div>
   <div style="max-width:1240px;margin:0 auto;position:relative;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:clamp(40px,6vw,96px);align-items:center;">
     <div style="display:flex;flex-direction:column;gap:clamp(36px,4vw,56px);">
       <div style="display:flex;flex-direction:column;gap:20px;">
@@ -507,7 +506,7 @@ a:hover{color:#FF2D9B;}
 </section>
 <section id="why" data-screen-label="03 Why" style="position:relative;overflow:hidden;background:#0B1226;padding:clamp(80px,11vw,150px) clamp(20px,5vw,64px);">
   <div style="position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(rgba(255,255,255,.06) 1.5px,transparent 1.5px);background-size:28px 28px;"></div>
-  <div style="position:absolute;width:clamp(360px,50vw,820px);height:clamp(360px,50vw,820px);border-radius:50%;background:#7B61FF;opacity:0.16;filter:blur(120px);pointer-events:none;top:-30%;right:-15%;"></div><div style="position:absolute;width:clamp(360px,50vw,820px);height:clamp(360px,50vw,820px);border-radius:50%;background:#00E6FF;opacity:0.1;filter:blur(120px);pointer-events:none;bottom:-30%;left:-15%;"></div>
+  <div style="position:absolute;width:clamp(360px,50vw,820px);height:clamp(360px,50vw,820px);background:radial-gradient(closest-side,#7B61FF 0%,#7B61FFb3 35%,#7B61FF00 100%);opacity:0.16;pointer-events:none;top:-30%;right:-15%;"></div><div style="position:absolute;width:clamp(360px,50vw,820px);height:clamp(360px,50vw,820px);background:radial-gradient(closest-side,#00E6FF 0%,#00E6FFb3 35%,#00E6FF00 100%);opacity:0.1;pointer-events:none;bottom:-30%;left:-15%;"></div>
   <div style="max-width:1240px;margin:0 auto;position:relative;display:flex;flex-direction:column;gap:clamp(40px,5vw,72px);">
     <div style="display:flex;flex-direction:column;gap:20px;">
       <span data-r="" style="font-family:'Space Mono',monospace;font-size:clamp(13px,1.2vw,16px);font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#FF2D9B;">Why us</span>
@@ -515,19 +514,19 @@ a:hover{color:#FF2D9B;}
       <p data-r="" style="--d:.1s;margin:0;font-size:clamp(17px,1.5vw,21px);line-height:1.55;color:rgba(255,255,255,.75);max-width:640px;text-wrap:pretty;">Everything an operator needs — from certified math to white-label UI — under one roof.</p>
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:24px;">
-      <div data-r="" style="--d:0.1s;background:rgba(30,16,51,.6);backdrop-filter:blur(20px) saturate(1.5);-webkit-backdrop-filter:blur(20px) saturate(1.5);border-radius:20px;box-shadow:inset 0 1px 0 rgba(255,255,255,.08);padding:clamp(28px,3vw,44px);display:flex;flex-direction:column;gap:20px;position:relative;overflow:hidden;">
+      <div data-r="" style="--d:0.1s;background:rgba(30,16,51,.82);border-radius:20px;box-shadow:inset 0 1px 0 rgba(255,255,255,.08);padding:clamp(28px,3vw,44px);display:flex;flex-direction:column;gap:20px;position:relative;overflow:hidden;">
         <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#00E6FF,#7B61FF);"></div>
         <img src="assets/6c3f2788.png" alt="" style="width:84px;height:84px;object-fit:contain;filter:drop-shadow(0 0 18px rgba(0,230,255,.5));">
         <div style="font-family:'Press Start 2P',monospace;font-weight:400;font-size:clamp(15px,1.3vw,18px);line-height:1.5;color:#fff;">Premium Visuals</div>
         <p style="margin:0;font-size:clamp(16px,1.3vw,18px);line-height:1.55;color:rgba(255,255,255,.78);">AAA-quality art and animations that retain players and make your platform stand out.</p>
       </div>
-      <div data-r="" style="--d:0.2s;background:rgba(30,16,51,.6);backdrop-filter:blur(20px) saturate(1.5);-webkit-backdrop-filter:blur(20px) saturate(1.5);border-radius:20px;box-shadow:inset 0 1px 0 rgba(255,255,255,.08);padding:clamp(28px,3vw,44px);display:flex;flex-direction:column;gap:20px;position:relative;overflow:hidden;">
+      <div data-r="" style="--d:0.2s;background:rgba(30,16,51,.82);border-radius:20px;box-shadow:inset 0 1px 0 rgba(255,255,255,.08);padding:clamp(28px,3vw,44px);display:flex;flex-direction:column;gap:20px;position:relative;overflow:hidden;">
         <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#7B61FF,#FF2D9B);"></div>
         <div style="width:84px;height:84px;display:flex;align-items:center;justify-content:center;font-family:'Press Start 2P',monospace;font-weight:400;font-size:68px;line-height:1;color:#FF2D9B;text-shadow:5px 5px 0 #7B61FF,0 0 22px rgba(255,45,155,.7);">7</div>
         <div style="font-family:'Press Start 2P',monospace;font-weight:400;font-size:clamp(15px,1.3vw,18px);line-height:1.5;color:#fff;">Player-Loved Mechanics</div>
         <p style="margin:0;font-size:clamp(16px,1.3vw,18px);line-height:1.55;color:rgba(255,255,255,.78);">Hold'n'Win, cascades, multipliers and bonus rounds — mechanics players love and keep coming back for.</p>
       </div>
-      <div data-r="" style="--d:0.3s;background:rgba(30,16,51,.6);backdrop-filter:blur(20px) saturate(1.5);-webkit-backdrop-filter:blur(20px) saturate(1.5);border-radius:20px;box-shadow:inset 0 1px 0 rgba(255,255,255,.08);padding:clamp(28px,3vw,44px);display:flex;flex-direction:column;gap:20px;position:relative;overflow:hidden;">
+      <div data-r="" style="--d:0.3s;background:rgba(30,16,51,.82);border-radius:20px;box-shadow:inset 0 1px 0 rgba(255,255,255,.08);padding:clamp(28px,3vw,44px);display:flex;flex-direction:column;gap:20px;position:relative;overflow:hidden;">
         <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#FF2D9B,#FFD24D);"></div>
         <img src="assets/e6cc0cfb.png" alt="" style="width:84px;height:84px;object-fit:contain;filter:drop-shadow(0 0 18px rgba(123,97,255,.55));">
         <div style="font-family:'Press Start 2P',monospace;font-weight:400;font-size:clamp(15px,1.3vw,18px);line-height:1.5;color:#fff;">Fast Integration</div>
@@ -538,7 +537,7 @@ a:hover{color:#FF2D9B;}
 </section>
 <section id="games" data-screen-label="04 Games" style="position:relative;overflow:hidden;background:#0B1226;padding:clamp(80px,11vw,150px) clamp(20px,5vw,64px);">
   <div style="position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(rgba(255,255,255,.06) 1.5px,transparent 1.5px);background-size:28px 28px;"></div>
-  <div style="position:absolute;width:clamp(360px,50vw,820px);height:clamp(360px,50vw,820px);border-radius:50%;background:#7B61FF;opacity:0.16;filter:blur(120px);pointer-events:none;top:-10%;right:-20%;"></div><div style="position:absolute;width:clamp(360px,50vw,820px);height:clamp(360px,50vw,820px);border-radius:50%;background:#00E6FF;opacity:0.08;filter:blur(120px);pointer-events:none;top:40%;left:-25%;"></div><div style="position:absolute;width:clamp(360px,50vw,820px);height:clamp(360px,50vw,820px);border-radius:50%;background:#FF2D9B;opacity:0.1;filter:blur(120px);pointer-events:none;bottom:-20%;right:0;"></div>
+  <div style="position:absolute;width:clamp(360px,50vw,820px);height:clamp(360px,50vw,820px);background:radial-gradient(closest-side,#7B61FF 0%,#7B61FFb3 35%,#7B61FF00 100%);opacity:0.16;pointer-events:none;top:-10%;right:-20%;"></div><div style="position:absolute;width:clamp(360px,50vw,820px);height:clamp(360px,50vw,820px);background:radial-gradient(closest-side,#00E6FF 0%,#00E6FFb3 35%,#00E6FF00 100%);opacity:0.08;pointer-events:none;top:40%;left:-25%;"></div><div style="position:absolute;width:clamp(360px,50vw,820px);height:clamp(360px,50vw,820px);background:radial-gradient(closest-side,#FF2D9B 0%,#FF2D9Bb3 35%,#FF2D9B00 100%);opacity:0.1;pointer-events:none;bottom:-20%;right:0;"></div>
   <div style="max-width:1240px;margin:0 auto;position:relative;display:flex;flex-direction:column;gap:clamp(40px,5vw,64px);">
     <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px;">
     <div style="display:flex;flex-direction:column;gap:20px;">
@@ -553,7 +552,7 @@ a:hover{color:#FF2D9B;}
       <span style="flex:1;height:1px;background:linear-gradient(90deg,#3DFFA8,rgba(255,255,255,0));opacity:.5;"></span>
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:20px;">
-      <article data-r="" style="--d:0s;background:rgba(30,16,51,.6);backdrop-filter:blur(20px) saturate(1.5);-webkit-backdrop-filter:blur(20px) saturate(1.5);border-radius:20px;box-shadow:inset 0 1px 0 rgba(255,255,255,.08);overflow:hidden;display:flex;flex-direction:column;transition:transform .3s ease,box-shadow .3s ease;" style-hover="transform:translateY(-6px);box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 0 0 1.5px #9B8AFF,0 20px 50px rgba(0,0,0,.4);">
+      <article data-r="" style="--d:0s;background:rgba(30,16,51,.82);border-radius:20px;box-shadow:inset 0 1px 0 rgba(255,255,255,.08);overflow:hidden;display:flex;flex-direction:column;transition:transform .3s ease,box-shadow .3s ease;" style-hover="transform:translateY(-6px);box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 0 0 1.5px #9B8AFF,0 20px 50px rgba(0,0,0,.4);">
         <div style="position:relative;aspect-ratio:16/9;background:#1E1033;">
           <img src="assets/2655bf94.jpg" alt="Neon Reels" style="width:100%;height:100%;object-fit:cover;display:block;">
           <span style="position:absolute;top:12px;left:12px;display:flex;align-items:center;gap:8px;padding:6px 10px;border-radius:8px;background:rgba(11,18,38,.82);font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#3DFFA8;pointer-events:none;"><span style="width:8px;height:8px;border-radius:50%;background:#3DFFA8;box-shadow:0 0 10px #3DFFA8;"></span>Live</span>
@@ -571,7 +570,7 @@ a:hover{color:#FF2D9B;}
           </div>
         </div>
       </article>
-      <article data-r="" style="--d:0.08s;background:rgba(30,16,51,.6);backdrop-filter:blur(20px) saturate(1.5);-webkit-backdrop-filter:blur(20px) saturate(1.5);border-radius:20px;box-shadow:inset 0 1px 0 rgba(255,255,255,.08);overflow:hidden;display:flex;flex-direction:column;transition:transform .3s ease,box-shadow .3s ease;" style-hover="transform:translateY(-6px);box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 0 0 1.5px #FFD24D,0 20px 50px rgba(0,0,0,.4);">
+      <article data-r="" style="--d:0.08s;background:rgba(30,16,51,.82);border-radius:20px;box-shadow:inset 0 1px 0 rgba(255,255,255,.08);overflow:hidden;display:flex;flex-direction:column;transition:transform .3s ease,box-shadow .3s ease;" style-hover="transform:translateY(-6px);box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 0 0 1.5px #FFD24D,0 20px 50px rgba(0,0,0,.4);">
         <div style="position:relative;aspect-ratio:16/9;background:#1E1033;">
           <img src="assets/ed9a701a.jpg" alt="Wild Western Story" style="width:100%;height:100%;object-fit:cover;display:block;">
           <span style="position:absolute;top:12px;left:12px;display:flex;align-items:center;gap:8px;padding:6px 10px;border-radius:8px;background:rgba(11,18,38,.82);font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#3DFFA8;pointer-events:none;"><span style="width:8px;height:8px;border-radius:50%;background:#3DFFA8;box-shadow:0 0 10px #3DFFA8;"></span>Live</span>
@@ -589,7 +588,7 @@ a:hover{color:#FF2D9B;}
           </div>
         </div>
       </article>
-      <article data-r="" style="--d:0.16s;background:rgba(30,16,51,.6);backdrop-filter:blur(20px) saturate(1.5);-webkit-backdrop-filter:blur(20px) saturate(1.5);border-radius:20px;box-shadow:inset 0 1px 0 rgba(255,255,255,.08);overflow:hidden;display:flex;flex-direction:column;transition:transform .3s ease,box-shadow .3s ease;" style-hover="transform:translateY(-6px);box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 0 0 1.5px #FFD24D,0 20px 50px rgba(0,0,0,.4);">
+      <article data-r="" style="--d:0.16s;background:rgba(30,16,51,.82);border-radius:20px;box-shadow:inset 0 1px 0 rgba(255,255,255,.08);overflow:hidden;display:flex;flex-direction:column;transition:transform .3s ease,box-shadow .3s ease;" style-hover="transform:translateY(-6px);box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 0 0 1.5px #FFD24D,0 20px 50px rgba(0,0,0,.4);">
         <div style="position:relative;aspect-ratio:16/9;background:#1E1033;">
           <img src="assets/0b0fe4d6.jpg" alt="East Discovery Hold'n'Win" style="width:100%;height:100%;object-fit:cover;display:block;">
           <span style="position:absolute;top:12px;left:12px;display:flex;align-items:center;gap:8px;padding:6px 10px;border-radius:8px;background:rgba(11,18,38,.82);font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#3DFFA8;pointer-events:none;"><span style="width:8px;height:8px;border-radius:50%;background:#3DFFA8;box-shadow:0 0 10px #3DFFA8;"></span>Live</span>
@@ -607,7 +606,7 @@ a:hover{color:#FF2D9B;}
           </div>
         </div>
       </article>
-      <article data-r="" style="--d:0s;background:rgba(30,16,51,.6);backdrop-filter:blur(20px) saturate(1.5);-webkit-backdrop-filter:blur(20px) saturate(1.5);border-radius:20px;box-shadow:inset 0 1px 0 rgba(255,255,255,.08);overflow:hidden;display:flex;flex-direction:column;transition:transform .3s ease,box-shadow .3s ease;" style-hover="transform:translateY(-6px);box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 0 0 1.5px #00E6FF,0 20px 50px rgba(0,0,0,.4);">
+      <article data-r="" style="--d:0s;background:rgba(30,16,51,.82);border-radius:20px;box-shadow:inset 0 1px 0 rgba(255,255,255,.08);overflow:hidden;display:flex;flex-direction:column;transition:transform .3s ease,box-shadow .3s ease;" style-hover="transform:translateY(-6px);box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 0 0 1.5px #00E6FF,0 20px 50px rgba(0,0,0,.4);">
         <div style="position:relative;aspect-ratio:16/9;background:#1E1033;">
           <img src="assets/8f85bcae.jpg" alt="Party Gods" style="width:100%;height:100%;object-fit:cover;display:block;">
           <span style="position:absolute;top:12px;left:12px;display:flex;align-items:center;gap:8px;padding:6px 10px;border-radius:8px;background:rgba(11,18,38,.82);font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#3DFFA8;pointer-events:none;"><span style="width:8px;height:8px;border-radius:50%;background:#3DFFA8;box-shadow:0 0 10px #3DFFA8;"></span>Live</span>
@@ -625,7 +624,7 @@ a:hover{color:#FF2D9B;}
           </div>
         </div>
       </article>
-      <article data-r="" style="--d:0.08s;background:rgba(30,16,51,.6);backdrop-filter:blur(20px) saturate(1.5);-webkit-backdrop-filter:blur(20px) saturate(1.5);border-radius:20px;box-shadow:inset 0 1px 0 rgba(255,255,255,.08);overflow:hidden;display:flex;flex-direction:column;transition:transform .3s ease,box-shadow .3s ease;" style-hover="transform:translateY(-6px);box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 0 0 1.5px #FF2D9B,0 20px 50px rgba(0,0,0,.4);">
+      <article data-r="" style="--d:0.08s;background:rgba(30,16,51,.82);border-radius:20px;box-shadow:inset 0 1px 0 rgba(255,255,255,.08);overflow:hidden;display:flex;flex-direction:column;transition:transform .3s ease,box-shadow .3s ease;" style-hover="transform:translateY(-6px);box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 0 0 1.5px #FF2D9B,0 20px 50px rgba(0,0,0,.4);">
         <div style="position:relative;aspect-ratio:16/9;background:#1E1033;">
           <img src="assets/c51652ac.jpg" alt="Amy's Fruit Farm" style="width:100%;height:100%;object-fit:cover;display:block;">
           <span style="position:absolute;top:12px;left:12px;display:flex;align-items:center;gap:8px;padding:6px 10px;border-radius:8px;background:rgba(11,18,38,.82);font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#3DFFA8;pointer-events:none;"><span style="width:8px;height:8px;border-radius:50%;background:#3DFFA8;box-shadow:0 0 10px #3DFFA8;"></span>Live</span>
@@ -643,7 +642,7 @@ a:hover{color:#FF2D9B;}
           </div>
         </div>
       </article>
-      <article data-r="" style="--d:0.16s;background:rgba(30,16,51,.6);backdrop-filter:blur(20px) saturate(1.5);-webkit-backdrop-filter:blur(20px) saturate(1.5);border-radius:20px;box-shadow:inset 0 1px 0 rgba(255,255,255,.08);overflow:hidden;display:flex;flex-direction:column;transition:transform .3s ease,box-shadow .3s ease;" style-hover="transform:translateY(-6px);box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 0 0 1.5px #FF2D9B,0 20px 50px rgba(0,0,0,.4);">
+      <article data-r="" style="--d:0.16s;background:rgba(30,16,51,.82);border-radius:20px;box-shadow:inset 0 1px 0 rgba(255,255,255,.08);overflow:hidden;display:flex;flex-direction:column;transition:transform .3s ease,box-shadow .3s ease;" style-hover="transform:translateY(-6px);box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 0 0 1.5px #FF2D9B,0 20px 50px rgba(0,0,0,.4);">
         <div style="position:relative;aspect-ratio:16/9;background:#1E1033;">
           <img src="assets/cd2c8444.jpg" alt="Sugar Galaxy" style="width:100%;height:100%;object-fit:cover;display:block;">
           <span style="position:absolute;top:12px;left:12px;display:flex;align-items:center;gap:8px;padding:6px 10px;border-radius:8px;background:rgba(11,18,38,.82);font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#3DFFA8;pointer-events:none;"><span style="width:8px;height:8px;border-radius:50%;background:#3DFFA8;box-shadow:0 0 10px #3DFFA8;"></span>Live</span>
@@ -670,7 +669,7 @@ a:hover{color:#FF2D9B;}
       <span style="flex:1;height:1px;background:linear-gradient(90deg,#FFD24D,rgba(255,255,255,0));opacity:.5;"></span>
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,240px),1fr));gap:20px;">
-      <a href="https://arturkasian4ik.github.io/uniqorn-lab/empire-of-crime.html" target="_blank" rel="noopener" data-r="" style="--d:0s;background:rgba(30,16,51,.6);backdrop-filter:blur(20px) saturate(1.5);-webkit-backdrop-filter:blur(20px) saturate(1.5);border-radius:20px;box-shadow:inset 0 1px 0 rgba(255,255,255,.08);overflow:hidden;display:flex;flex-direction:column;color:inherit;transition:transform .3s ease;" style-hover="transform:translateY(-4px);color:inherit;">
+      <a href="https://arturkasian4ik.github.io/uniqorn-lab/empire-of-crime.html" target="_blank" rel="noopener" data-r="" style="--d:0s;background:rgba(30,16,51,.82);border-radius:20px;box-shadow:inset 0 1px 0 rgba(255,255,255,.08);overflow:hidden;display:flex;flex-direction:column;color:inherit;transition:transform .3s ease;" style-hover="transform:translateY(-4px);color:inherit;">
         <div style="position:relative;aspect-ratio:16/9;">
           <img src="assets/d523b545.jpg" alt="Empire of Crime" style="width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.55) brightness(.6);">
           <span style="position:absolute;top:12px;left:12px;padding:6px 10px;border-radius:8px;background:rgba(11,18,38,.82);font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#FFD24D;">Coming soon</span>
@@ -684,7 +683,7 @@ a:hover{color:#FF2D9B;}
           <p style="margin:0;font-size:15px;line-height:1.55;color:rgba(255,255,255,.75);">1920s criminal underworld. Wild substitutions, crime syndicate bonus rounds, progressive jackpot.</p>
         </div>
       </a>
-      <a href="https://arturkasian4ik.github.io/uniqorn-lab/golden-caravan.html" target="_blank" rel="noopener" data-r="" style="--d:0.08s;background:rgba(30,16,51,.6);backdrop-filter:blur(20px) saturate(1.5);-webkit-backdrop-filter:blur(20px) saturate(1.5);border-radius:20px;box-shadow:inset 0 1px 0 rgba(255,255,255,.08);overflow:hidden;display:flex;flex-direction:column;color:inherit;transition:transform .3s ease;" style-hover="transform:translateY(-4px);color:inherit;">
+      <a href="https://arturkasian4ik.github.io/uniqorn-lab/golden-caravan.html" target="_blank" rel="noopener" data-r="" style="--d:0.08s;background:rgba(30,16,51,.82);border-radius:20px;box-shadow:inset 0 1px 0 rgba(255,255,255,.08);overflow:hidden;display:flex;flex-direction:column;color:inherit;transition:transform .3s ease;" style-hover="transform:translateY(-4px);color:inherit;">
         <div style="position:relative;aspect-ratio:16/9;">
           <img src="assets/b7fe5d59.jpg" alt="Golden Caravan" style="width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.55) brightness(.6);">
           <span style="position:absolute;top:12px;left:12px;padding:6px 10px;border-radius:8px;background:rgba(11,18,38,.82);font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#FFD24D;">Coming soon</span>
@@ -698,7 +697,7 @@ a:hover{color:#FF2D9B;}
           <p style="margin:0;font-size:15px;line-height:1.55;color:rgba(255,255,255,.75);">Ancient Egyptian treasure hunt. Cascading reels, scarab wilds, and the Pharaoh free spins feature.</p>
         </div>
       </a>
-      <a href="https://arturkasian4ik.github.io/uniqorn-lab/multi-fruits-story.html" target="_blank" rel="noopener" data-r="" style="--d:0.16s;background:rgba(30,16,51,.6);backdrop-filter:blur(20px) saturate(1.5);-webkit-backdrop-filter:blur(20px) saturate(1.5);border-radius:20px;box-shadow:inset 0 1px 0 rgba(255,255,255,.08);overflow:hidden;display:flex;flex-direction:column;color:inherit;transition:transform .3s ease;" style-hover="transform:translateY(-4px);color:inherit;">
+      <a href="https://arturkasian4ik.github.io/uniqorn-lab/multi-fruits-story.html" target="_blank" rel="noopener" data-r="" style="--d:0.16s;background:rgba(30,16,51,.82);border-radius:20px;box-shadow:inset 0 1px 0 rgba(255,255,255,.08);overflow:hidden;display:flex;flex-direction:column;color:inherit;transition:transform .3s ease;" style-hover="transform:translateY(-4px);color:inherit;">
         <div style="position:relative;aspect-ratio:16/9;">
           <img src="assets/50b5f4af.jpg" alt="Multi Fruits Story" style="width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.55) brightness(.6);">
           <span style="position:absolute;top:12px;left:12px;padding:6px 10px;border-radius:8px;background:rgba(11,18,38,.82);font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#FFD24D;">Coming soon</span>
@@ -712,7 +711,7 @@ a:hover{color:#FF2D9B;}
           <p style="margin:0;font-size:15px;line-height:1.55;color:rgba(255,255,255,.75);">Colorful fruit characters with personalities. Scatter pays, expanding wilds, and a story-driven bonus.</p>
         </div>
       </a>
-      <a href="https://arturkasian4ik.github.io/uniqorn-lab/lucky-joker.html" target="_blank" rel="noopener" data-r="" style="--d:0.24s;background:rgba(30,16,51,.6);backdrop-filter:blur(20px) saturate(1.5);-webkit-backdrop-filter:blur(20px) saturate(1.5);border-radius:20px;box-shadow:inset 0 1px 0 rgba(255,255,255,.08);overflow:hidden;display:flex;flex-direction:column;color:inherit;transition:transform .3s ease;" style-hover="transform:translateY(-4px);color:inherit;">
+      <a href="https://arturkasian4ik.github.io/uniqorn-lab/lucky-joker.html" target="_blank" rel="noopener" data-r="" style="--d:0.24s;background:rgba(30,16,51,.82);border-radius:20px;box-shadow:inset 0 1px 0 rgba(255,255,255,.08);overflow:hidden;display:flex;flex-direction:column;color:inherit;transition:transform .3s ease;" style-hover="transform:translateY(-4px);color:inherit;">
         <div style="position:relative;aspect-ratio:16/9;">
           <img src="assets/a3779733.jpg" alt="Lucky Joker Hold'n'Win" style="width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.55) brightness(.6);">
           <span style="position:absolute;top:12px;left:12px;padding:6px 10px;border-radius:8px;background:rgba(11,18,38,.82);font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#FFD24D;">Coming soon</span>
@@ -746,7 +745,7 @@ a:hover{color:#FF2D9B;}
 </section>
 <section id="contact" data-screen-label="06 Contact" style="position:relative;overflow:hidden;background:#0B1226;padding:clamp(80px,11vw,150px) clamp(20px,5vw,64px);">
   <div style="position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(rgba(255,255,255,.06) 1.5px,transparent 1.5px);background-size:28px 28px;"></div>
-  <div style="position:absolute;width:clamp(360px,50vw,820px);height:clamp(360px,50vw,820px);border-radius:50%;background:#7B61FF;opacity:0.22;filter:blur(120px);pointer-events:none;top:20%;left:50%;transform:translateX(-50%);"></div><div style="position:absolute;width:clamp(360px,50vw,820px);height:clamp(360px,50vw,820px);border-radius:50%;background:#00E6FF;opacity:0.1;filter:blur(120px);pointer-events:none;top:-30%;left:-20%;"></div><div style="position:absolute;width:clamp(360px,50vw,820px);height:clamp(360px,50vw,820px);border-radius:50%;background:#FF2D9B;opacity:0.1;filter:blur(120px);pointer-events:none;bottom:-30%;right:-20%;"></div>
+  <div style="position:absolute;width:clamp(360px,50vw,820px);height:clamp(360px,50vw,820px);background:radial-gradient(closest-side,#7B61FF 0%,#7B61FFb3 35%,#7B61FF00 100%);opacity:0.22;pointer-events:none;top:20%;left:50%;transform:translateX(-50%);"></div><div style="position:absolute;width:clamp(360px,50vw,820px);height:clamp(360px,50vw,820px);background:radial-gradient(closest-side,#00E6FF 0%,#00E6FFb3 35%,#00E6FF00 100%);opacity:0.1;pointer-events:none;top:-30%;left:-20%;"></div><div style="position:absolute;width:clamp(360px,50vw,820px);height:clamp(360px,50vw,820px);background:radial-gradient(closest-side,#FF2D9B 0%,#FF2D9Bb3 35%,#FF2D9B00 100%);opacity:0.1;pointer-events:none;bottom:-30%;right:-20%;"></div>
   <div data-io="" style="max-width:1240px;margin:0 auto;position:relative;display:flex;flex-direction:column;align-items:center;gap:clamp(32px,4vw,56px);">
     <h2 data-a="pop" style="--d:2.9s;margin:0;font-family:'Press Start 2P',monospace;font-weight:400;text-align:center;display:flex;flex-direction:column;gap:16px;"><span style="font-size:clamp(22px,4.4vw,60px);line-height:1.4;background:linear-gradient(90deg,#FFD24D 0%,#00E6FF 45%,#FF2D9B 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;">LET'S COOPERATE</span><span style="font-size:clamp(13px,2vw,28px);line-height:1.5;color:#fff;">&amp; BREAK THE MARKET</span></h2>
     <div data-a="drop" style="width:100%;max-width:860px;">
