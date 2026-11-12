@@ -385,6 +385,18 @@ a:hover{color:#FF2D9B;}
 [data-io][data-in] [data-a="spin"]{animation:u-spin var(--t,2s) cubic-bezier(.15,.5,.25,1.04) both;animation-delay:1.3s}
 [data-io][data-in] [data-a="pop"]{animation:u-pop .7s cubic-bezier(.2,.8,.2,1) both;animation-delay:var(--d,0s)}
 }
+@media (prefers-reduced-motion:no-preference){
+[data-r]:not([data-in]){opacity:0;transform:translateY(32px)}
+[data-io]:not([data-in]) [data-a="drop"],[data-io]:not([data-in]) [data-a="pop"]{opacity:0}
+[data-r],[data-a]{backface-visibility:hidden;-webkit-backface-visibility:hidden}
+}
+@keyframes crew-pan{0%,6%{transform:translateX(0)}94%,100%{transform:translateX(var(--crew-shift))}}
+@media (max-width:859px){
+[data-spot]{transition:--mx 1.6s cubic-bezier(.45,0,.25,1),--my 1.6s cubic-bezier(.45,0,.25,1)}
+[data-crew-frame]{aspect-ratio:4/5 !important;max-height:none !important;--crew-shift:-57.98%}
+[data-crew-frame] [data-crew-img]{inset:0 auto 0 0 !important;width:auto !important;height:100% !important;aspect-ratio:1731/909;max-width:none;object-fit:fill !important;will-change:transform;animation:crew-pan 16s ease-in-out infinite alternate}
+}
+@media (max-width:859px) and (prefers-reduced-motion:reduce){[data-crew-frame] [data-crew-img]{animation:none;transform:translateX(-29%)}}
 </style>
 <script>
 (function(){
@@ -401,6 +413,21 @@ a:hover{color:#FF2D9B;}
   window.__uCheck = check;
   setInterval(check, 250);
   check();
+})();
+</script>
+<script>
+(function(){
+  var touchedAt=0;
+  document.addEventListener('touchstart',function(){touchedAt=Date.now();},{passive:true});
+  function tick(){
+    if (window.innerWidth>=860) return;
+    var s=document.querySelector('[data-spot]'); if(!s) return;
+    if (Date.now()-touchedAt<3000) return;
+    var r=s.getBoundingClientRect(); if (r.bottom<0||r.top>window.innerHeight) return;
+    s.style.setProperty('--mx',(18+Math.random()*64).toFixed(1)+'%');
+    s.style.setProperty('--my',(22+Math.random()*46).toFixed(1)+'%');
+  }
+  setInterval(tick,1800); setTimeout(tick,300);
 })();
 </script>
 <script src="assets/202412d1.js"></script>
@@ -719,8 +746,8 @@ a:hover{color:#FF2D9B;}
   </div>
 </section>
 <section id="crew" data-screen-label="05 Crew" data-spot="" style="position:relative;overflow:hidden;background:#05070f;--mx:50%;--my:45%;">
-  <div style="position:relative;width:100%;aspect-ratio:1731/909;max-height:100vh;">
-    <img src="assets/3b4ec39c.png" alt="The Uniqorn crew" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+  <div data-crew-frame="" style="position:relative;width:100%;aspect-ratio:1731/909;max-height:100vh;overflow:hidden;">
+    <img data-crew-img="" src="assets/3b4ec39c.png" alt="The Uniqorn crew" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
     <div style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle clamp(140px,22vw,380px) at var(--mx) var(--my),rgba(5,7,15,.1) 0%,rgba(5,7,15,.45) 55%,rgba(5,7,15,.82) 100%);"></div>
     <div style="position:absolute;left:0;right:0;bottom:0;height:45%;pointer-events:none;background:linear-gradient(0deg,#05070f,rgba(5,7,15,0));"></div>
   </div>
@@ -744,8 +771,8 @@ a:hover{color:#FF2D9B;}
           <span style="font-family:'Press Start 2P',monospace;font-weight:400;font-size:clamp(12px,1.4vw,20px);color:#00E6FF;letter-spacing:.1em;text-shadow:0 0 14px rgba(0,230,255,.7);">UNIQORN LAB</span>
         </div>
         <div style="display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:clamp(6px,1vw,14px);padding:clamp(8px,1.4vw,18px);border-radius:14px;background:#0B1226;box-shadow:inset 0 0 0 3px #FFD24D,0 0 36px rgba(255,210,77,.25);">
-          <div style="aspect-ratio:3/4;border-radius:10px;overflow:hidden;background:linear-gradient(180deg,#d9d4ee,#ffffff 40%,#ffffff 60%,#d9d4ee);container-type:size;">
-            <div data-a="spin" style="--t:1.6s;display:flex;flex-direction:column;height:800%;transform:translateY(-87.5%);">
+          <div style="aspect-ratio:3/4;border-radius:10px;overflow:hidden;background:linear-gradient(180deg,#d9d4ee,#ffffff 40%,#ffffff 60%,#d9d4ee);position:relative;">
+            <div data-a="spin" style="--t:1.6s;position:absolute;left:0;right:0;top:0;display:flex;flex-direction:column;height:800%;transform:translateY(-87.5%);">
               <span style="flex:1;display:flex;align-items:center;justify-content:center;font-family:'Press Start 2P',monospace;font-weight:400;font-size:clamp(24px,5vw,72px);color:#FF2D9B;">7</span>
               <span style="flex:1;display:flex;align-items:center;justify-content:center;font-family:'Press Start 2P',monospace;font-weight:400;font-size:clamp(24px,5vw,72px);color:#7B61FF;">Q</span>
               <span style="flex:1;display:flex;align-items:center;justify-content:center;font-family:'Press Start 2P',monospace;font-weight:400;font-size:clamp(24px,5vw,72px);color:#FF4D22;">R</span>
@@ -756,8 +783,8 @@ a:hover{color:#FF2D9B;}
               <span style="flex:1;display:flex;align-items:center;justify-content:center;font-family:'Press Start 2P',monospace;font-weight:400;font-size:clamp(24px,5vw,72px);color:#1E1033;">U</span>
             </div>
           </div>
-          <div style="aspect-ratio:3/4;border-radius:10px;overflow:hidden;background:linear-gradient(180deg,#d9d4ee,#ffffff 40%,#ffffff 60%,#d9d4ee);container-type:size;">
-            <div data-a="spin" style="--t:2s;display:flex;flex-direction:column;height:800%;transform:translateY(-87.5%);">
+          <div style="aspect-ratio:3/4;border-radius:10px;overflow:hidden;background:linear-gradient(180deg,#d9d4ee,#ffffff 40%,#ffffff 60%,#d9d4ee);position:relative;">
+            <div data-a="spin" style="--t:2s;position:absolute;left:0;right:0;top:0;display:flex;flex-direction:column;height:800%;transform:translateY(-87.5%);">
               <span style="flex:1;display:flex;align-items:center;justify-content:center;font-family:'Press Start 2P',monospace;font-weight:400;font-size:clamp(24px,5vw,72px);color:#FF4D22;">U</span>
               <span style="flex:1;display:flex;align-items:center;justify-content:center;font-family:'Press Start 2P',monospace;font-weight:400;font-size:clamp(24px,5vw,72px);color:#FF2D9B;">7</span>
               <span style="flex:1;display:flex;align-items:center;justify-content:center;font-family:'Press Start 2P',monospace;font-weight:400;font-size:clamp(24px,5vw,72px);color:#7B61FF;">R</span>
@@ -768,8 +795,8 @@ a:hover{color:#FF2D9B;}
               <span style="flex:1;display:flex;align-items:center;justify-content:center;font-family:'Press Start 2P',monospace;font-weight:400;font-size:clamp(24px,5vw,72px);color:#1E1033;">N</span>
             </div>
           </div>
-          <div style="aspect-ratio:3/4;border-radius:10px;overflow:hidden;background:linear-gradient(180deg,#d9d4ee,#ffffff 40%,#ffffff 60%,#d9d4ee);container-type:size;">
-            <div data-a="spin" style="--t:2.4s;display:flex;flex-direction:column;height:800%;transform:translateY(-87.5%);">
+          <div style="aspect-ratio:3/4;border-radius:10px;overflow:hidden;background:linear-gradient(180deg,#d9d4ee,#ffffff 40%,#ffffff 60%,#d9d4ee);position:relative;">
+            <div data-a="spin" style="--t:2.4s;position:absolute;left:0;right:0;top:0;display:flex;flex-direction:column;height:800%;transform:translateY(-87.5%);">
               <span style="flex:1;display:flex;align-items:center;justify-content:center;font-family:'Press Start 2P',monospace;font-weight:400;font-size:clamp(24px,5vw,72px);color:#7B61FF;">N</span>
               <span style="flex:1;display:flex;align-items:center;justify-content:center;font-family:'Press Start 2P',monospace;font-weight:400;font-size:clamp(24px,5vw,72px);color:#FF2D9B;">7</span>
               <span style="flex:1;display:flex;align-items:center;justify-content:center;font-family:'Press Start 2P',monospace;font-weight:400;font-size:clamp(24px,5vw,72px);color:#00b8cc;">U</span>
@@ -780,8 +807,8 @@ a:hover{color:#FF2D9B;}
               <span style="flex:1;display:flex;align-items:center;justify-content:center;font-family:'Press Start 2P',monospace;font-weight:400;font-size:clamp(24px,5vw,72px);color:#1E1033;">Q</span>
             </div>
           </div>
-          <div style="aspect-ratio:3/4;border-radius:10px;overflow:hidden;background:linear-gradient(180deg,#d9d4ee,#ffffff 40%,#ffffff 60%,#d9d4ee);container-type:size;">
-            <div data-a="spin" style="--t:2.8s;display:flex;flex-direction:column;height:800%;transform:translateY(-87.5%);">
+          <div style="aspect-ratio:3/4;border-radius:10px;overflow:hidden;background:linear-gradient(180deg,#d9d4ee,#ffffff 40%,#ffffff 60%,#d9d4ee);position:relative;">
+            <div data-a="spin" style="--t:2.8s;position:absolute;left:0;right:0;top:0;display:flex;flex-direction:column;height:800%;transform:translateY(-87.5%);">
               <span style="flex:1;display:flex;align-items:center;justify-content:center;font-family:'Press Start 2P',monospace;font-weight:400;font-size:clamp(24px,5vw,72px);color:#00b8cc;">Q</span>
               <span style="flex:1;display:flex;align-items:center;justify-content:center;font-family:'Press Start 2P',monospace;font-weight:400;font-size:clamp(24px,5vw,72px);color:#FF4D22;">N</span>
               <span style="flex:1;display:flex;align-items:center;justify-content:center;font-family:'Press Start 2P',monospace;font-weight:400;font-size:clamp(24px,5vw,72px);color:#FF2D9B;">7</span>
@@ -792,8 +819,8 @@ a:hover{color:#FF2D9B;}
               <span style="flex:1;display:flex;align-items:center;justify-content:center;font-family:'Press Start 2P',monospace;font-weight:400;font-size:clamp(24px,5vw,72px);color:#1E1033;">R</span>
             </div>
           </div>
-          <div style="aspect-ratio:3/4;border-radius:10px;overflow:hidden;background:linear-gradient(180deg,#d9d4ee,#ffffff 40%,#ffffff 60%,#d9d4ee);container-type:size;">
-            <div data-a="spin" style="--t:3.2s;display:flex;flex-direction:column;height:800%;transform:translateY(-87.5%);">
+          <div style="aspect-ratio:3/4;border-radius:10px;overflow:hidden;background:linear-gradient(180deg,#d9d4ee,#ffffff 40%,#ffffff 60%,#d9d4ee);position:relative;">
+            <div data-a="spin" style="--t:3.2s;position:absolute;left:0;right:0;top:0;display:flex;flex-direction:column;height:800%;transform:translateY(-87.5%);">
               <span style="flex:1;display:flex;align-items:center;justify-content:center;font-family:'Press Start 2P',monospace;font-weight:400;font-size:clamp(24px,5vw,72px);color:#FF2D9B;">R</span>
               <span style="flex:1;display:flex;align-items:center;justify-content:center;font-family:'Press Start 2P',monospace;font-weight:400;font-size:clamp(24px,5vw,72px);color:#00b8cc;">7</span>
               <span style="flex:1;display:flex;align-items:center;justify-content:center;font-family:'Press Start 2P',monospace;font-weight:400;font-size:clamp(24px,5vw,72px);color:#7B61FF;">Q</span>
