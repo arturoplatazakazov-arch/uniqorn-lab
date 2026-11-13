@@ -1,0 +1,154 @@
+/* Uniqorn Lab — motion layer (ul-anim.css). Paired with ul-anim.js. */
+:root{--ul-e:cubic-bezier(.22,1,.3,1)}
+html{scroll-behavior:smooth}
+section[id]{scroll-margin-top:72px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+/* ── scroll progress ─────────────────────────────── */
+#ul-prog{position:fixed;left:0;top:0;height:3px;width:100%;z-index:60;transform:scaleX(0);transform-origin:0 50%;
+  background:linear-gradient(90deg,#FFD24D,#00E6FF 38%,#7B61FF 68%,#FF2D9B);box-shadow:0 0 16px rgba(0,230,255,.45);pointer-events:none}
+
+/* ── sticky header: the runtime wrapper is exactly one screen tall, which
+   cuts the header loose after the first screen — let it span the page ── */
+body,#dc-root,#dc-root>div{height:auto!important;min-height:100vh}
+/* ── header ──────────────────────────────────────── */
+header{transition:background .35s ease,box-shadow .35s ease}
+header>div{transition:padding .35s var(--ul-e)}
+header a img{transition:transform .35s var(--ul-e)}
+header[data-ul-stuck]{background:rgba(11,18,38,.93)!important;box-shadow:0 1px 0 rgba(255,255,255,.08),0 14px 40px rgba(0,0,0,.45)!important}
+header[data-ul-stuck]>div{padding-top:6px!important;padding-bottom:6px!important}
+header[data-ul-stuck] a img{transform:scale(.84)}
+header nav a{transition:color .3s ease,text-shadow .3s ease}
+header nav a[data-ul-active]{color:#00E6FF!important;text-shadow:0 0 14px rgba(0,230,255,.5)}
+
+/* ── reveal on scroll ────────────────────────────── */
+@media (prefers-reduced-motion:no-preference){
+  [data-r]:not([data-in]){opacity:0;transform:translate3d(0,36px,0) scale(.985)}
+  [data-r][data-in]{animation:ul-rise .95s var(--ul-e) both;animation-delay:var(--d,0s)}
+  [data-r][data-ul-dir="l"]:not([data-in]){transform:translate3d(-46px,10px,0)}
+  [data-r][data-ul-dir="l"][data-in]{animation-name:ul-rise-l}
+  [data-r][data-ul-dir="r"]:not([data-in]){transform:translate3d(46px,10px,0)}
+  [data-r][data-ul-dir="r"][data-in]{animation-name:ul-rise-r}
+  /* once played, hand the element back to CSS so :hover transforms work */
+  [data-r][data-ul-done]{animation:none!important;opacity:1;transform:none}
+
+  /* headline lines */
+  .ul-line{display:block;overflow:hidden}
+  .ul-line>.ul-li{display:block}
+  .ul-line:not([data-ul-in])>.ul-li{transform:translate3d(0,112%,0)}
+  .ul-line[data-ul-in]>.ul-li{animation:ul-lineup 1s var(--ul-e) both;animation-delay:var(--d,0s)}
+  .ul-glitch{animation:ul-glitch .55s steps(2,end) both;animation-delay:var(--gd,0s)}
+}
+@keyframes ul-rise{from{opacity:0;transform:translate3d(0,36px,0) scale(.985)}}
+@keyframes ul-rise-l{from{opacity:0;transform:translate3d(-46px,10px,0)}}
+@keyframes ul-rise-r{from{opacity:0;transform:translate3d(46px,10px,0)}}
+@keyframes ul-lineup{from{transform:translate3d(0,112%,0)}}
+@keyframes ul-glitch{0%{transform:none}25%{transform:translate3d(-3px,0,0) skewX(-3deg)}50%{transform:translate3d(3px,0,0) skewX(2deg);filter:brightness(1.4)}75%{transform:translate3d(-1px,0,0)}100%{transform:none}}
+
+/* ── ambient drift of the glow blobs ─────────────── */
+@media (prefers-reduced-motion:no-preference){
+  [data-ul-blob]{animation:ul-drift var(--dur,24s) ease-in-out infinite alternate;animation-delay:var(--dl,0s)}
+}
+@keyframes ul-drift{from{transform:var(--base,translate3d(0,0,0))}
+  to{transform:var(--base,translate3d(0,0,0)) translate3d(var(--dx,40px),var(--dy,-30px),0) scale(var(--ds,1.1))}}
+
+/* ── hero mascot ─────────────────────────────────── */
+.ul-par{display:block;will-change:transform}
+@media (prefers-reduced-motion:no-preference){
+  .ul-float{display:block;animation:ul-float 7.5s ease-in-out infinite alternate}
+}
+@keyframes ul-float{from{transform:translate3d(0,-11px,0) rotate(-.7deg)}to{transform:translate3d(0,13px,0) rotate(.9deg)}}
+
+/* ── teams ring: one quick turn on reveal, then keeps turning ───── */
+@media (prefers-reduced-motion:no-preference){
+  /* only the ring itself turns — the logo in the middle is a sibling, it stays put */
+  [data-ring][data-in] svg{animation:ul-ring-in 1.15s cubic-bezier(.16,.82,.3,1) both,
+                                     ul-ring 18s linear 1.15s infinite}
+}
+@keyframes ul-ring-in{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+@keyframes ul-ring{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+
+/* ── cards ───────────────────────────────────────── */
+#games article,#games a[data-r]{transition:transform .45s var(--ul-e),box-shadow .45s var(--ul-e)}
+.ul-cover{overflow:hidden}
+.ul-cover>img{transition:transform .8s var(--ul-e);will-change:transform}
+#games article:hover .ul-cover>img,#games a:hover .ul-cover>img{transform:scale(1.07)}
+.ul-sheen{position:absolute;inset:0;pointer-events:none;z-index:2;
+  background:linear-gradient(105deg,transparent 38%,rgba(255,255,255,.26) 50%,transparent 62%);
+  transform:translate3d(-130%,0,0);transition:transform 1s var(--ul-e)}
+#games article:hover .ul-sheen,#games a:hover .ul-sheen{transform:translate3d(130%,0,0)}
+@media (prefers-reduced-motion:no-preference){
+  .ul-dot{animation:ul-pulse 2s ease-in-out infinite}
+}
+@keyframes ul-pulse{0%,100%{box-shadow:0 0 10px #3DFFA8,0 0 0 0 rgba(61,255,168,.5)}70%{box-shadow:0 0 10px #3DFFA8,0 0 0 8px rgba(61,255,168,0)}}
+
+/* ── buttons ─────────────────────────────────────── */
+[data-ul-mag]{position:relative;overflow:hidden;transition:transform .4s var(--ul-e),filter .3s ease,box-shadow .4s ease;will-change:transform}
+[data-ul-mag]::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.3) 50%,transparent 60%);
+  transform:translate3d(-140%,0,0);transition:transform .85s var(--ul-e)}
+[data-ul-mag]:hover::after{transform:translate3d(140%,0,0)}
+
+/* ── crew spotlight trail ────────────────────────── */
+@media (min-width:860px){[data-spot]{transition:--mx .5s ease-out,--my .5s ease-out}}
+[data-crew-img]{will-change:transform}
+
+/* ── contact slot machine ────────────────────────── */
+@media (prefers-reduced-motion:no-preference){
+  .ul-neon{animation:ul-neon 7s linear infinite}
+}
+@keyframes ul-neon{0%,88%,100%{opacity:1}89%{opacity:.4}90%{opacity:1}93%{opacity:.55}94%{opacity:1}}
+.ul-reels{cursor:pointer}
+
+/* ── hover lift for the small feature cards ──────── */
+#teams [data-r][data-ul-done],#why [data-r][data-ul-done]{transition:transform .45s var(--ul-e),box-shadow .45s var(--ul-e)}
+#why [data-r][data-ul-done]:hover{transform:translate3d(0,-6px,0)}
+
+/* the page's own reveals wait up to 2.9s — too long when a whole screen
+   lands at once; cap the delay so nothing looks missing */
+@media (prefers-reduced-motion:no-preference){
+  [data-a]{animation-delay:min(var(--d,0s),.85s)!important}
+}
+
+/* ── safety net for the page's own data-a headings (see ul-anim.js) ── */
+[data-ul-rescue]{animation:ul-pop .85s var(--ul-e) both!important}
+@keyframes ul-pop{from{opacity:0;transform:scale(.72)}to{opacity:1;transform:none}}
+
+/* ── hero headline: two lines, no mid-word wrap, living gradient ── */
+#top h1{font-size:clamp(23px,3.3vw,46px)!important;line-height:1.3!important}
+#top h1 span{white-space:nowrap}
+@media (prefers-reduced-motion:no-preference){
+  #top h1 span[style*="linear-gradient"]{
+    background-image:linear-gradient(90deg,#00E6FF,#7B61FF 28%,#FF2D9B 52%,#7B61FF 74%,#00E6FF 100%)!important;
+    background-size:260% 100%!important;
+    animation:ul-grad 7s linear infinite;
+  }
+}
+@keyframes ul-grad{from{background-position:0% 50%}to{background-position:260% 50%}}
+
+/* ── craft floor: the parts the design did not draw ───────────── */
+/* keyboard focus — the page shipped with no focus styles at all */
+a:focus-visible,button:focus-visible,[tabindex]:focus-visible{
+  outline:2px solid #00E6FF;outline-offset:3px;border-radius:10px;
+}
+::selection{background:rgba(0,230,255,.3);color:#fff}
+html{accent-color:#00E6FF}
+
+/* the sticky header clipped the headline of whatever section you jumped to */
+section[id]{scroll-margin-top:calc(var(--ul-hdr,68px) + 8px)}
+
+/* touch targets: the wordmark and the footer link were under 44px tall */
+@media (hover:none){
+  header a:first-child{padding:6px 2px}
+  footer a{display:inline-block;padding:12px 4px}
+}
+
+/* the violet middle of the CTA gradient left the label at 4.4:1 — lift it
+   just enough to clear AA without changing the colour story */
+a[style*="linear-gradient(90deg,#00E6FF,#7B61FF 60%,#FF2D9B)"],
+a[style*="linear-gradient(90deg, rgb(0, 230, 255), rgb(123, 97, 255) 60%, rgb(255, 45, 155))"]{
+  background-image:linear-gradient(90deg,#00E6FF,#9B8AFF 60%,#FF4FAC)!important;
+}
+
+/* "coming soon" badges were painted over the game logos */
+#games-3 .ul-grid > a > div:first-child > span{top:auto!important;bottom:10px!important}
