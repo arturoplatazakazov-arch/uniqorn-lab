@@ -115,7 +115,7 @@ header nav a[data-ul-active]{color:#00E6FF!important;text-shadow:0 0 14px rgba(0
 @keyframes ul-pop{from{opacity:0;transform:scale(.72)}to{opacity:1;transform:none}}
 
 /* ── hero headline: two lines, no mid-word wrap, living gradient ── */
-#top h1{font-size:clamp(23px,3.3vw,46px)!important;line-height:1.3!important}
+#top h1{font-size:clamp(16px,2.1vw,30px)!important;line-height:1.5!important}
 #top h1 span{white-space:nowrap}
 @media (prefers-reduced-motion:no-preference){
   #top h1 span[style*="linear-gradient"]{
@@ -125,6 +125,24 @@ header nav a[data-ul-active]{color:#00E6FF!important;text-shadow:0 0 14px rgba(0
   }
 }
 @keyframes ul-grad{from{background-position:0% 50%}to{background-position:260% 50%}}
+
+/* ── стоп мерцанию шапки на десктопе ─────────────────────────────
+   шапка размывает фон (backdrop-filter), а под ней всё время что-то
+   крутится — кольцо на экране Teams, пятна свечения в каждом блоке.
+   Пока эти слои не вынесены на GPU, браузер пересчитывает размытие
+   вместе с ними и шапка «блымает». Выносим — и гасим анимации в
+   блоках, которых сейчас не видно (см. rest() в ul-anim.js). */
+header{transform:translateZ(0);will-change:transform;backface-visibility:hidden}
+#ul-prog{will-change:transform}
+[data-ul-blob]{backface-visibility:hidden}
+section[id]:not([data-ul-rest]) [data-ul-blob]{will-change:transform}
+[data-ring] svg{will-change:transform;backface-visibility:hidden}
+[data-crew-img]{backface-visibility:hidden}
+[data-ul-rest] [data-ul-blob],
+[data-ul-rest] .ul-dot,
+[data-ul-rest] [data-ring] svg,
+[data-ul-rest] .ul-neon,
+[data-ul-rest] .ul-glitch{animation-play-state:paused!important}
 
 /* ── craft floor: the parts the design did not draw ───────────── */
 /* keyboard focus — the page shipped with no focus styles at all */

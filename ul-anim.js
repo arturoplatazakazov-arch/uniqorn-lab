@@ -301,6 +301,30 @@
     });
   }
 
+  /* ── 10b. let offscreen blocks rest ─────────────────────────────
+     every section carries three drifting glow blobs, and the cards carry
+     pulsing dots: two dozen infinite animations run at once, most of them
+     off screen. They keep the compositor busy and make the blurred header
+     flicker on weaker desktop GPUs. Park a section's animations whenever
+     it is out of view. */
+  var restIO = null;
+  function rest() {
+    if (!window.IntersectionObserver) return;
+    if (!restIO) {
+      restIO = new IntersectionObserver(function (es) {
+        es.forEach(function (e) {
+          if (e.isIntersecting) e.target.removeAttribute('data-ul-rest');
+          else e.target.setAttribute('data-ul-rest', '');
+        });
+      }, { rootMargin: '15% 0px 15% 0px' });
+    }
+    [].slice.call(document.querySelectorAll('section[id]')).forEach(function (s) {
+      if (s.hasAttribute('data-ul-watched')) return;
+      s.setAttribute('data-ul-watched', '');
+      restIO.observe(s);
+    });
+  }
+
   /* ── 11. one rAF loop for scroll / pointer parallax ────────────── */
   var sy = 0, mx = 0, my = 0, dirty = true, tick = 0;
   function onScroll() { sy = window.pageYOffset || document.documentElement.scrollTop || 0; dirty = true; }
@@ -371,6 +395,7 @@
   function init() {
     safe(chrome); safe(reveals); safe(headings); safe(blobs);
     safe(cards); safe(buttons); safe(numbers); safe(crew); safe(slot); safe(rescue);
+    safe(rest);
     dirty = true;
   }
   function boot() {
