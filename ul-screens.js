@@ -58,28 +58,78 @@
     if (px > 0) document.documentElement.style.setProperty('--ul-hdr', px + 'px');
   }
 
-  /* the hero headline is set in a pixel font and must not wrap mid-phrase,
-     so a line can grow wider than its column and get clipped. No clamp()
-     guess survives every window width — measure the longest line and take
-     the size down until it fits. */
+  /* the hero headline is set in a pixel font, so no clamp() guess fits every
+     window: a line either gets clipped or ends up tiny. Measure instead.
+     Wide enough for whole phrases per line — keep them and use the size the
+     stylesheet asks for. Too narrow — let the lines wrap at spaces and size
+     the type to the longest word, which is far bigger than squeezing the
+     whole phrase into one line would allow (24px instead of 16 on a phone). */
+  var HERO_MAX = 34;   /* never bigger than this, however much room there is */
+  var HERO_WRAP_VP = 700; /* below this width a phrase may break across lines */
+  function textWidth(h1, strings) {
+    var cs = getComputedStyle(h1);
+    var probe = document.createElement('span');
+    probe.style.cssText = 'position:absolute;left:-9999px;top:0;white-space:pre;visibility:hidden;pointer-events:none';
+    probe.style.fontFamily = cs.fontFamily;
+    probe.style.fontSize = cs.fontSize;
+    probe.style.fontWeight = cs.fontWeight;
+    probe.style.letterSpacing = cs.letterSpacing;
+    document.body.appendChild(probe);
+    var max = 0;
+    strings.forEach(function (s) {
+      probe.textContent = s;
+      var w = probe.getBoundingClientRect().width;
+      if (w > max) max = w;
+    });
+    probe.remove();
+    return max;
+  }
   function fitHero() {
     var h1 = document.querySelector('#top h1');
     if (!h1 || !h1.children.length) return;
+    var spans = [].slice.call(h1.children);
+    /* ul-anim.js re-wraps each line as .ul-line > .ul-li > <span>, and the
+       stylesheet's nowrap sits on that innermost span — reach them all */
+    var inner = [].slice.call(h1.querySelectorAll('*'));
     h1.style.removeProperty('font-size');
+    inner.forEach(function (s) { s.style.removeProperty('white-space'); });
     var avail = h1.clientWidth;
     if (!avail) return;
-    var rng = document.createRange(), w = 0;
-    [].slice.call(h1.children).forEach(function (s) {
-      rng.selectNodeContents(s);
-      var r = rng.getBoundingClientRect();
-      if (r.width > w) w = r.width;
-    });
-    if (!w || w <= avail - 1) return;
     var cur = parseFloat(getComputedStyle(h1).fontSize);
     if (!cur) return;
-    var fs = Math.max(12, Math.floor(cur * (avail - 2) / w * 10) / 10);
+    var lines = spans.map(function (s) { return s.textContent.trim(); });
+    var wLine = textWidth(h1, lines);
+    if (!wLine) return;
+    var fsLine = cur * (avail - 2) / wLine;   /* biggest size with a phrase per line */
+
+    /* desktop keeps the phrasing and the size the design asks for — step in
+       only when a line would be clipped */
+    if (innerWidth >= 1100) {
+      if (wLine <= avail - 2) return;
+      h1.style.setProperty('font-size', Math.max(12, Math.floor(fsLine * 10) / 10) + 'px', 'important');
+      return;
+    }
+    /* tablets: still a phrase per line, but filling the column reads far
+       better than the 16px the vw-based size falls back to */
+    if (innerWidth > HERO_WRAP_VP) {
+      h1.style.setProperty('font-size', Math.max(12, Math.floor(Math.min(HERO_MAX, fsLine) * 10) / 10) + 'px', 'important');
+      return;
+    }
+
+    /* phones: a whole phrase on one line leaves the type tiny, so let the
+       lines break at spaces and size them to the longest word instead */
+    var words = lines.join(' ').split(/\s+/).filter(Boolean);
+    var wWord = textWidth(h1, words);
+    var fsWord = wWord ? cur * (avail - 2) / wWord : 0;
+    var capLine = Math.min(HERO_MAX, fsLine);
+    var capWord = Math.min(HERO_MAX, fsWord);
+    var fs, wrap;
+    if (capWord > capLine * 1.12) { fs = capWord; wrap = true; }
+    else { fs = capLine; wrap = false; }
+    fs = Math.max(12, Math.floor(fs * 10) / 10);
     /* ul-anim.css sets the size with !important, so match it */
     h1.style.setProperty('font-size', fs + 'px', 'important');
+    if (wrap) inner.forEach(function (s) { s.style.setProperty('white-space', 'normal', 'important'); });
   }
 
   /* the contact screen is the tallest block: the slot machine can push the
