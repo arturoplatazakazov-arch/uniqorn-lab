@@ -58,6 +58,30 @@
     if (px > 0) document.documentElement.style.setProperty('--ul-hdr', px + 'px');
   }
 
+  /* the hero headline is set in a pixel font and must not wrap mid-phrase,
+     so a line can grow wider than its column and get clipped. No clamp()
+     guess survives every window width — measure the longest line and take
+     the size down until it fits. */
+  function fitHero() {
+    var h1 = document.querySelector('#top h1');
+    if (!h1 || !h1.children.length) return;
+    h1.style.removeProperty('font-size');
+    var avail = h1.clientWidth;
+    if (!avail) return;
+    var rng = document.createRange(), w = 0;
+    [].slice.call(h1.children).forEach(function (s) {
+      rng.selectNodeContents(s);
+      var r = rng.getBoundingClientRect();
+      if (r.width > w) w = r.width;
+    });
+    if (!w || w <= avail - 1) return;
+    var cur = parseFloat(getComputedStyle(h1).fontSize);
+    if (!cur) return;
+    var fs = Math.max(12, Math.floor(cur * (avail - 2) / w * 10) / 10);
+    /* ul-anim.css sets the size with !important, so match it */
+    h1.style.setProperty('font-size', fs + 'px', 'important');
+  }
+
   /* the contact screen is the tallest block: the slot machine can push the
      two buttons past the fold on a short window, in a browser whose chrome
      eats more height than we guessed. Measure and scale it until it fits. */
@@ -121,7 +145,7 @@
   function fitAll() {
     if (fitting) return;
     fitting = true;
-    try { fitContact(); fitRest(); } catch (e) { console.warn('[ul-screens]', e); }
+    try { fitHero(); fitContact(); fitRest(); } catch (e) { console.warn('[ul-screens]', e); }
     fitting = false;
   }
 
